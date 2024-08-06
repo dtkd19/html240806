@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+
+        body{ 
+            /* 컨텐츠 보호를 위해 */
+            min-width: 900px;
+        }
+
+        .con{
+            display: flex;
+            height: 50px;
+            /* border: 1px solid black; */
+            justify-content: space-between;
+            line-height: 70px;
+        }
+        .logo{
+            margin-left: 30px;
+            font-size: 25px;
+            font-family: "Single Day", cursive;
+            font-weight: 700;
+        }
+        .menu{
+            display: flex;
+            width: 20%;
+            justify-content: space-between;
+            margin-right: 30px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-family: "Dongle", sans-serif;
+            font-weight: 700;
+            font-size: 30px;
+        }
+        .menu>div>a:hover{
+            color: gray;
+        }
+
+        .main-box{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .main-img{
+            margin-top: 20px;
+            width: 720px;
+            height: 840px;
+            background-image: url(../image/메인이미지5.jpg);
+            background-repeat: no-repeat;   
+            /* border: 1px solid black; */
+        }
+        .main-img2{
+            margin-top: 20px;
+            width: 720px;
+            height: 840px;
+            border: 1px solid black;
+            background-image: url(../image/메인이미지3.jpg);
+            background-repeat: no-repeat; 
+        }
+
+        h3{
+            margin-top: 70px;
+            text-align: center;
+            font-size: 90px;
+            font-family: "Dongle", sans-serif;
+            font-weight: 700;
+            
+        }
+        .cg{
+            display: flex;
+            /* border: 1px solid black; */
+            justify-content: center;   
+            flex-wrap: wrap;
+            margin-left: 20%;
+            margin-right: 20%;
+            width: 60%;
+            text-align: center;
+            
+        }
+        .sell{
+            width: 300px;
+            height: 550px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: 20px;
+        }
+
+        .sell>a>div:first-child{
+            width: 100%;
+            height: 200px;
+            background-size: 250px,200px;
+            background-color: aqua;
+            background-position: center;
+            transition: background-size 0.5s;
+        }
+        .sell>a>div:first-child:hover{
+            background-size: 300px,200px;
+
+        }
+         /* .sell>a>div{
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+        }  */
+
+
+        .sell .sub-img1{
+            background-image: url(../image/메인이미지2.jpg);
+        }
+        .sell .sub-img2{
+            background-image: url(../image/서브이미지1.jpg);
+        }
+        .sell .sub-img3{
+            background-image: url(../image/서브이미지2.jpg);
+        }
+        .sell .sub-img4{
+            background-image: url(../image/서브이미지3.jpg);
+        }
+        .sell .sub-img5{
+            background-image: url(../image/서브이미지4.jpg);
+        }
+        .sell .sub-img6{
+            background-image: url(../image/서브이미지5.jpg);
+        }
+        .sell .sub-img7{
+            background-image: url(../image/서브이미지6.jpg);
+        }
+        .sell .sub-img8{
+            background-image: url(../image/서브이미지7.jpg);
+        }
+        .sell .sub-img9{
+            background-image: url(../image/서브이미지8.jpg);
+        }
+
+
+        .text{
+            text-align: center;
+            width: 100%;
+            font-family: "Dongle", sans-serif;
+            font-weight: 400;
+            font-size: 30px;
+        }
+
+        .icon-box{
+            margin-top: 30px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+        }
+        .icon-box2{
+            width: 500px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .icon1>a{
+            color: blueviolet;
+        }
+        .icon2>a{
+            color: blue;
+        }
+        .icon3>a{
+            color: rgb(2, 92, 177);
+        }
+
+        h4{
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        /* 세일상품 */
+        .cg>.sell{
+            position: relative;
+        }
+
+        .cg .sale{
+            position: absolute;
+            top:150px;
+            left:50%;
+            transform: translateX(-50%);
+            color: red;
+            display: none;
+            
+        }
+
+        /* hover 시 디스플레이를 다시 블럭으로 설정 */
+        /* hover의 대상이 다른경우 */
+        .sell>a>div:first-child:hover ~ .sale{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="logo">
+            SIMPLE SHOP
+        </div>
+        <div class="menu">
+            <div class="content"><a href="">Content</a></div>
+            <div class="shop"><a href="">Shop</a></div>
+            <div class="cart"><a href="">Cart</a></div>
+            <div class="login"><a href="">Login</a></div>
+        </div>
+    </div>
+    <div class="main-box">
+        <div class="main-img"></div>
+        <div class="main-img2"></div>
+    </div>
+
+    <h3>Our New Product</h3>
+
+    <div class="cg">
+        <div class="sell">
+            <a href="">
+            <div class="sub-img1"></div>
+            <div class="sale">세일상품</div>
+            <div class="text">
+            <h4>셔츠맛집 남친룩 코디🖤</h4>
+            <p>지금 날씨에 입기 좋은 남친룩의 정석!</p>
+            <p>오버핏 피그먼트 셔츠와 퍼펙트 데님팬츠로
+            이번 주말+여행룩을 완성해보세요!</p>
+            </div> </a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img2"></div>
+            <div class="text">
+            <h4>🌊썸머 남친룩 코디🌊</h4>
+            <p>항상 나의 일상을 책임질 코디 LOOK</p>
+            <p>일상의 편안함부터 출근룩의 단정함,
+                데이트룩의 깔끔함까지!</p>
+            </div></a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img3"></div>
+            <div class="text">
+            <h4>🖤가장 많은 TOP 구매량</h4>
+            <p>이룰 자체제작
+                레이어드 반팔티 + 버뮤다 반바지</p>
+            <p>넉넉한 사이즈로
+                언제 어디서나 편하게 입기 좋고,
+                레이어드가 결합된 반팔티로
+                깔끔한 포인트까지!</p>
+            </div></a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img4"></div>
+            <div class="text">
+            <h4>💙시원한 여름 코디 💙</h4>
+            <p>쿨링소재로 시원한 반팔니트와 세미와이드 데님팬츠로
+                퀄리티 높은 데이트룩
+            <p>어디에나 어울리는 팬츠와 포인트로 갖춰입기 좋은 반팔니트로 올여름 코디 걱정 끝내세요
+                ヾ(•ω•`)o</p>
+            </div></a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img5"></div>
+            <div class="text">
+            <h4>미니멀 끝판왕🧡데일리 1위코디</h4>
+            <p>올 여름 코디 어떻게 할지 고민이시죠?!🧡 
+                <br>얇지만 탄탄한 물빠짐없는 미니멀 생지 데님 반팔셔츠 에
+                시원한 화이트 핀턱 린넨팬츠로 데일리한 코디 완성해봤어요 !!</p>
+            </div></a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img6"></div>
+            <div class="text">
+            <h4>◈잘 입은 스트릿 코디◈</h4>
+            <p>옷 잘 입고 싶지만 어떻게 입어야
+                잘 입은 티가 나는지 모르겠는 분들에게 추천드리는
+                스트릿 코디 룩입니다!</p>
+            </div></a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img7"></div>
+            <div class="text">
+            <h4>🖤반팔티 한 장으로 스트릿</h4>
+            <p>트렌디한 오버핏과 스트릿한 무드의 일루네스 레터링 프린팅이 매력적인 반팔 티셔츠</p>
+                <p>여유있는 핏의 벌룬 프론트 카고 팬츠를 매치하여
+                캐주얼, 스트릿, 캐트릿 등 이번 여름 시원하면서 트렌디한 코디
+                </p>
+            </div></a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img8"></div>
+            <div class="text">
+            <h4>☀살타지않는 남친룩SET</h4>
+            <p>시원하게 통풍이 잘 될 수 있는 린넨 와이드 팬츠와
+                시스루 셔츠</p> 가볍고 덥지 않는 시원하게 입기 좋고
+                쿨 소재 반팔로 더위를 식혀주며 남친룩으로 멋진 코디입니다!</p>
+            </div></a>
+        </div>
+        <div class="sell">
+            <a href="">
+            <div class="sub-img9"></div>
+            <div class="text">
+            <h4>💙1등 데일리 코디룩</h4>
+            <p>가볍고 통기성이 좋으며 신축성 또한 뛰어난 제품이라
+                무더운 여름철에 활용하기 최적화된 제품입니다.
+                NEW 컬러 추가💙</p>
+            <p>부담없는 트레이닝 찰떡 5부 반바지와 코디 완성!</p>
+            </div></a>
+        </div>
+    </div>
+    <div class="icon-box">
+        <div class="icon-box2">
+        <div class="icon1">
+            <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+              </svg>
+            </a>
+        </div>
+        <div class="icon2">
+            <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+              </svg>
+            </a>
+        </div>
+        <div class="icon3">
+            <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg></a>
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>

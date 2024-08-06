@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 태그들이 가지고 있는 고유 속성들을 없애주는 코드 reset.css */
+        body{
+            height: 100vh;
+            background-image: linear-gradient(to bottom, rgba(247, 140, 113, 0.692) 0%, rgba(128, 128, 128, 0.199) 100%),url(../image/풍경2.jpg);
+            /* background-blend-mode: multiply; */
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+        }
+        .logo{
+            margin-left: 30px;
+            font-size: 25px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+
+        }
+        .con{
+            display: flex;
+            height: 50px;
+            /* border: 1px solid black; */
+            justify-content: space-between;
+            line-height: 50px;
+        }
+        .menu{
+            display: flex;
+            width: 20%;
+            justify-content: space-between;
+            margin-right: 30px;
+        }
+        .menu a:hover{
+            color: gray;
+        }
+        
+        .main{
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .main>h2{
+            color: white;
+            font-weight: bold;
+            font-size: 40px;
+        }
+        .main button{
+            padding: 15px 20px;
+            font-size: 25px;
+            font-weight: 700;
+            color: white;
+            background-color: rgba(0, 128, 0, 0.671);
+            border: 2px solid greenyellow;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .main button:hover{
+            background-color: rgba(123, 172, 60, 0.37);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="con">
+        <div class="logo">
+            <a href="">DESIGN</a>
+        </div>
+        <div class="menu">
+            <div class="home"><a href="">HOME</a></div>
+            <div class="login"><a href="">LOGIN</a></div>
+            <div class="infomation"><a href="">INFOMATION</a></div>
+            <div class="board"><a href="">BOARD</a></div>
+        </div>
+    </div>
+
+    <div class="main">
+        <h2>Welcome to Front-End World</h2>
+        <a href=""><button>Learn More</button></a> 
+    </div>
+
+    
+</body>
+</html>

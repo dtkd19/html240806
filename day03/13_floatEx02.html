@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .pbox1{
+            width: 500px;
+            height: 500px;
+        }
+
+        .box{
+            width:calc(100% / 3);
+            height: 100%;
+            float: left;
+        }
+
+        .pbox1::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .box1{
+            background-color: aqua;
+        }
+        .box2{
+            background-color: bisque;
+        }
+        .box3{
+            background-color: brown;
+        }
+        .pbox2{        
+            width: 500px;
+            height: 500px;
+        }
+        .pbox2::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .box4{
+            background-color: blanchedalmond;
+        }
+        .box5{
+            width: calc((100% /3) * 2);
+            background-color: blueviolet;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <div class="pbox1">
+        <div class="box box1"></div>
+        <div class="box box2" ></div>
+        <div class="box box3"></div>
+    </div>
+    <div class="pbox2">
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+    </div>
+</body>
+</html>

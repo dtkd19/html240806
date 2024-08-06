@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+         /* table{
+            border-collapse: collapse;
+        } */
+        table th, td{
+            /* border: 1px solid black;
+            border-collapse: collapse; */
+            text-align: center;
+        }
+        .w50{
+            width: 50%;
+        } 
+    </style>
+</head>
+<body>
+    
+    <h2>리스트의 구조에따라 자바스크립트 객체 생성</h2>
+    <form action="">
+        이름: <input type="text" name="" id="name"><br>
+        거주지: <input type="text" name="" id="addr"><br>
+        좋아하는리스트<br>
+        리스트1: <input type="text" name="" id="list1"><br>
+        리스트2: <input type="text" name="" id="list2"><br>
+        리스트3: <input type="text" name="" id="list3"><br>
+        이메일: <input type="email" name="" id="mail"><br>
+        내가 가장 좋아하는 것: <input type="text" name="" id="wanna"><br>
+        <button type="button" onclick="sendInfo()">객체로 전송</button><br>
+        전송받은 데이터 표로 <button type="button" id="printBtn">출력</button>
+        <table border="1" id="infoTable"></table>
+    </form>
+
+    <!-- <ul id="ul"></ul> -->
+    <!-- <table id="table"></table> -->
+    <script>
+        const myInfo = {
+            name:'',
+            addr:'',
+            lists : {
+                list1:'',
+                list2:'',
+                list3:''
+            },
+            mail:'',
+            wanna:''
+        };        
+        function sendInfo(){
+
+            let name = document.getElementById('name').value;
+            let addr = document.getElementById('addr').value;
+            let list1 = document.getElementById('list1').value;
+            let list2 = document.getElementById('list2').value;
+            let list3 = document.getElementById('list3').value;
+            let mail = document.getElementById('mail').value;
+            let wanna = document.getElementById('wanna').value;
+
+            myInfo.name = name;
+            myInfo.addr = addr;
+            myInfo.lists.list1 = list1;
+            myInfo.lists.list2 = list2;
+            myInfo.lists.list3 = list3;
+            myInfo.mail = mail;
+            myInfo.wanna = wanna;
+
+            console.log(myInfo);
+        }   
+        
+        document.getElementById('printBtn').addEventListener('click', () => {
+            const infoTable = document.getElementById('infoTable');
+            let str = `<tr><th class="w50">이름</th><td class="w50">${myInfo.name}</td></tr>`;
+            str += `<tr><th>거주지</th><td>${myInfo.addr}</td></tr>`;
+            str += `<tr><th>좋아하는 리스트</th>`;
+            str += `<td><ul>`;
+            str += `<li>${myInfo.lists.list1}</li>`
+            str += `<li>${myInfo.lists.list2}</li>`
+            str += `<li>${myInfo.lists.list3}</li>`
+            str += `</ul></td></tr>`;
+            str += `<tr><th>이메일</th><td>${myInfo.mail}</td></tr>`;
+            str += `<tr><th>가장 좋아하는 것</th><td>${myInfo.wanna}</td></tr>`;
+            
+            infoTable.innerHTML = str;
+        })
+        // function sendTable(){
+
+        //     let name = document.getElementById('name').value;
+        //     let addr = document.getElementById('addr').value;
+        //     let list1 = document.getElementById('list1').value;
+        //     let list2 = document.getElementById('list2').value;
+        //     let list3 = document.getElementById('list3').value;
+        //     let mail = document.getElementById('mail').value;
+        //     let wanna = document.getElementById('wanna').value;
+
+        //     myInfo.name = name;
+        //     myInfo.addr = addr;
+        //     myInfo.lists.list1 = list1;
+        //     myInfo.lists.list2 = list2;
+        //     myInfo.lists.list3 = list3;
+        //     myInfo.mail = mail;
+        //     myInfo.wanna = wanna;
+
+        //     console.log(myInfo);
+
+        //     let str1 = `<li>${list1}</li>`;
+        //     str1 += `<li>${list2}</li>`;
+        //     str1 += `<li>${list3}</li>`;
+
+        //     ul.innerHTML = str1;
+
+        //     let str = `<tr><th class="w50">이름</th><td class="w50">${myInfo.name}</td></tr>`;
+        //     str += `<tr><th>거주지</th><td>${myInfo.addr}</td></tr>`;
+        //     str += `<tr><th>좋아하는 리스트</th><td>${ul.innerHTML}</td></tr>`;
+        //     str += `<tr><th>이메일</th><td>${myInfo.mail}</td></tr>`;
+        //     str += `<tr><th>가장 좋아하는 것</th><td>${myInfo.wanna}</td></tr>`;
+
+        //     table.innerHTML = str;
+
+        // }
+
+    </script>
+
+</body>
+</html>

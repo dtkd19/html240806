@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    text 속성
+    - text-align : 정렬 left, right, center, justify(양쪽)
+    - text-indent : 들여쓰기
+    - text-decoration : 선긋기
+        none : 없음.
+        underline : 밑줄
+        overline : 윗줄
+        line-through : 가운데줄
+    - text-shadow : 글자 그림자
+        - 좌측px 상단px 번짐정도px 색상
+        - 중첩가능(멀티가능), (,) 콤마로 계속 이어나갈 수 있음.
+    - letter-spacing : 글자간 간격
+    - word-spacing : 단어간 간격
+    - line-height : 글자 기준선 높이
+    - white-space : 컨텐츠 감싸기 방법
+        - wrap : 여러줄 만들기
+        - nowrap : 한줄로 처리
+    - text-overflow : 텍스트가 범위를 넘어가는 경우 처리
+        - ellipsis : 넘어가는 부분의 단위를 ...으로 처리
+    - overflow : 요소가 넘어가면 어떻게 처리할지 결정
+        - hidden : 숨김
+        - scroll : 스크롤바 생성
+        - auto : 스크롤 오토 생성
+    -->
+    <!-- 
+    css 표준단위
+    px : 픽셀
+    % : 퍼센트 현재 값을 기준으로 %
+    em : 배수, 부모값을 기준으로 배수
+    rem : 배수, 문서의 값을 기준으로 배수
+    cm/mm/in => 각 단위
+    pt : 포인터 1pt => 1/72 in
+    pc : 피카소 1pc => 12pt
+    deg : 각도
+    -->
+    <style>
+        p{
+            text-indent: 20px;
+            text-align: justify;
+            /* word-spacing: 20px;
+            letter-spacing: 5px; */
+        }
+        .line{
+            width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis eros a dui posuere, ut fermentum mauris cursus. Aenean metus urna, hendrerit at velit ac, varius egestas justo. Donec a ante faucibus, dictum arcu sit amet, fringilla turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Phasellus dignissim lorem sem, a tincidunt sem ornare nec. Donec cursus diam a nisi lobortis imperdiet. Maecenas varius risus orci, vitae accumsan nibh blandit non.
+
+    </p>
+    <p class="line">
+        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut quis euismod diam. Praesent aliquet in tellus nec sodales. Sed vel velit ut sem tempor sagittis tincidunt finibus eros. Phasellus et laoreet velit, interdum vehicula diam. Duis mauris arcu, lacinia id vehicula eget, consequat ac mi. Morbi tempor erat eget accumsan interdum. Donec at dolor nec sapien tempor convallis vel vel odio. Curabitur nunc nunc, luctus mollis convallis a, blandit sit amet enim. Maecenas rhoncus viverra nisl, eu vulputate dolor ultricies ut.
+ </p> 
+</body>
+</html>

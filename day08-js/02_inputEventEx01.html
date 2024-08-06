@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .table{
+            border: 1px solid black;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        .table td{
+            border: 1px solid black;
+            width: 100px;
+        }
+        .table .thead{
+            background-color: yellow;
+            font-weight: 700;
+        }
+        
+        /* table{
+            border-collapse: collapse;
+        }
+        table th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .bgc{
+            background-color: rgb(182, 227, 245);
+        }
+
+        .w30{
+            width: 30%;
+        }
+        .w50{
+            width: 50%;
+        } */
+     
+    </style>
+</head>
+<body>
+    
+    <!-- 
+    성적확인
+    이름 : input
+    국어 : input
+    영어 : input
+    수학 : input
+    성적계산 버튼
+    --------------------
+    ul => li
+    이름 : 홍길동
+    국어 : 87
+    영어 : 78
+    수학 : 89
+    합계 : 000
+    평균 : 000
+     -->
+
+     <form action="">
+        <fieldset>
+            <legend>성적확인</legend>
+            이름: <input type="text" name="" id="name1"><br>
+            국어: <input type="text" name="" id="kor"><br>
+            영어: <input type="text" name="" id="eng"><br>
+            수학: <input type="text" name="" id="math"><br>
+            <button type="button" onclick="info()">성적계산 버튼</button>
+        </fieldset>
+     </form>
+     <ul id="ul"></ul>
+     <table id="table" class="table"></table>
+     <script>
+
+        const myObject = {
+            name:'',
+            kor:'',
+            eng:'',
+            math:''
+        };
+
+
+
+        const name1 = document.getElementById('name1');
+        const kor = document.getElementById('kor');
+        const eng = document.getElementById('eng');
+        const math = document.getElementById('math');
+        const ul = document.getElementById('ul');
+        const table = document.getElementById('table');
+
+
+        function info(){
+            let sum = Number(kor.value) + Number(eng.value) + Number(math.value);
+            // Math.round() => 정수로 반올림. (소수점을 남기지 않음)
+            // .toFixed(2) : 소수 자리수 표현
+            let avg = (sum / 3).toFixed(2);
+
+            // table 태그로 테이블 표시
+
+            let str1 = `<tr class="thead"><td>이름</td>`;
+            str1 += `<td>국어</td>`;
+            str1 += `<td>영어</td>`;
+            str1 += `<td>수학</td></tr>`;
+            str1 += `<tr><td>${name1.value}</td>`;
+            str1 += `<td>${kor.value}</td>`;
+            str1 += `<td>${eng.value}</td>`;
+            str1 += `<td>${math.value}</td></tr>`;
+            str1 += `<tr><td>합계</td>`;
+            str1 += `<td colspan="3">${sum}</td></tr>`;
+            str1 += `<tr><td>평균</td>`;
+            str1 += `<td colspan="3">${avg}</td></tr>`;
+
+            table.innerHTML = str1;
+
+            // let str2 = `<tr><th class="w30">이름</th><td class="w50">${name1.value}</td></tr>`;
+            // str2 += `<tr><th>국어점수</th><td>${kor.value}</td></tr>`;
+            // str2 += `<tr><th>수학점수</th><td>${myObject.eng}</td></tr>`;
+            // str2 += `<tr><th>영어점수</th><td>${myObject.math}</td></tr>`;
+            // str2 += `<tr class="bgc"><th>합계</th><td>${sum}</td></tr>`;
+            // str2 += `<tr class="bgc"><th>평균</th><td>${avg}</td></tr>`;
+                
+            
+            // table.innerHTML = str2;
+            
+            
+            
+            let str = `<li> 이름: ${name1.value} </li> `;
+            str += `<li> 국어: ${kor.value} </li> `;
+            str += `<li> 영어: ${eng.value} </li> `;
+            str += `<li> 수학: ${math.value} </li> `;
+            str += `<li> 합계: ${sum} </li> `;
+            str += `<li> 평균: ${avg} </li> `;
+
+
+
+            console.log(myObject);
+            myObject.name = name1.value;
+            myObject.kor = kor.value;
+            myObject.eng = eng.value;
+            myObject.math = math.value;
+
+            
+            ul.innerHTML = str;      
+        }
+
+        
+
+       
+
+        
+
+
+     </script>
+</body>
+</html>
