@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+    <fieldset>
+        <legend>성적확인</legend>
+        이름: <input type="text" name="" id="name"><br>
+        국어점수: <input type="text" name="" id="kor"><br>
+        영어점수: <input type="text" name="" id="eng"><br>
+        수학점수: <input type="text" name="" id="math"><br>
+        <button type="button" onclick="pushBtn()">성적확인 버튼</button>
+    </fieldset>
+    </form>
+    <h3 id="h3"></h3>
+    <script>
+        // 이름, 국어, 영어, 수학 점수를 입력받아 합계, 평균, 합격여부 출력
+        // 합격여부는 평균이 60이상이면 pass / fail 
+
+        // 입력 값의 범위가 0~100 사이의 점수가 아니면 alert 창 띄어 안내
+
+        function pushBtn(){
+            let name = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let eng = document.getElementById('eng').value;
+            let math = document.getElementById('math').value;
+            const h3 = document.getElementById('h3');
+
+            let sum = Number(kor)+Number(eng)+Number(math);
+            let avg = (sum/3).toFixed(2);
+
+            let pass = ''; 
+            if(avg >= 60) {
+                pass = "pass";
+            } else {
+                 pass = "fail";
+            }
+            
+            if(kor<0 || kor >100){
+                alert("국어점수범위가 잘못됐습니다.")
+                document.getElementById('kor').value = '';
+            } else if(eng<0 || eng > 100){
+                alert("영어점수범위가 잘못됐습니다.")
+                document.getElementById('eng').value = '';
+            } else if(math<0 || math> 100){
+                alert("수학점수범위가 잘못됐습니다.")
+                document.getElementById('math').value = '';
+            }else{
+                h3.innerText = ` 이름: ${name}, 합계: ${sum}, 평균: ${avg}, 합격여부: ${pass} `;
+            }
+        }
+    </script>
+</body>
+</html>

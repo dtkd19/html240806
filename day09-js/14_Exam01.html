@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>가위바위보 10번하여 승률 출력</h1>
+    <button type="button" id="btn">결과 출력</button>
+    <h3>10게임의 승률은 <span id="result"></span>% 입니다.</h3>
+
+    <script>
+        // 가위 = 1 , 바위 =2 , 보 = 3
+        // com = random / player = random
+        // 승률 (승 / 10-무) * 100 소수점 2자리까지 표현
+        // 콘솔 com / player 출력
+        // 콘솔에 승: 무: 패: 
+        
+        document.getElementById('btn').addEventListener('click', () => {
+            let com = 0;
+            let player = 0;
+            let win = 0;
+            let equal = 0;
+            let lose = 0;
+
+            for(let i = 1; i <= 10; i++){
+                com = Math.floor(Math.random()*3)+1;
+                player = Math.floor(Math.random()*3)+1;
+                console.log(`${com} / ${player} `)
+                if(com == player){
+                    equal++;
+                }else if(player == 1 && com == 2){
+                    lose++;
+                }else if(player == 1 && com == 3){
+                    win++;
+                }else if(player == 2 && com == 1){
+                    win++;
+                }else if(player == 2 && com == 3){
+                    lose++;
+                }else if(player == 3 && com == 1){
+                    lose++;
+                }else if(player == 3 && com == 2){
+                    win++;
+                }
+            }
+            console.log(` 승: ${win} 무: ${equal} 패: ${lose} `)
+            
+            let rate = (( win / (10-equal))*100).toFixed(2);
+            
+            let result = document.getElementById('result');
+
+            result.innerText = ` ${rate} ` ;
+        })
+
+    </script>
+</body>
+</html>

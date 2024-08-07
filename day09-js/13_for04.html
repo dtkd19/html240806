@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>향상된 for</h1>
+    <ul>
+        <li>
+            for of : 배열안의 내용을 탐색할 때 사용 []
+            for(let value of Array){
+                code....;
+            }
+        </li>
+        <li>
+            for in : 객체 안의 내용을 탐색할 때 사용 {}
+            for(let value in Object){
+                <!--  key : value  -->
+                code...;
+            }
+        </li>
+    </ul>
+    <h3>약수 출력하기</h3>
+    <input type="text" id="num">
+    <button id ="btn">약수 출력</button>
+    <h3 id="result">
+        약수 출력 / 개수<br>
+    </h3>
+    <script>
+    // 약수 1~ 나 자신의 수(num) 까지 나눈 나머지가 0인수
+    
+    let a = document.getElementById('result').innerHTML;
+
+    document.getElementById('btn').addEventListener('click', () => {
+        
+        let count = 0;
+        let num = Number(document.getElementById('num').value);
+        // let result = document.getElementById('result');
+        let str = `${a}`;
+        // for(let i=1; i <= num; i++){
+        //     if(num % i == 0){
+        //         count++;
+        //         str += ` ${i}`;
+        //     }
+        // }
+        for(let i=1; i <= num; i++){
+            if(num % i == 0){
+                str += `${i} `;
+                count++;
+            }
+        }
+
+
+        // result.innerText = ` 약수: ${str} 약수 개수: ${count} `;    
+        document.getElementById('result').innerHTML = `${str} / ${count}`;  
+    })
+    
+    
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        이름: <input type="text" name="" id="name"><br>
+        주민번호: <input type="text" name="" id="Num"><br>
+        <button type="button" onclick="infoBtn()">확인</button>
+    </form>
+    <h3 id="h3"></h3>
+    <script>
+
+        function infoBtn(){
+            let name = document.getElementById('name').value;
+            let Num = document.getElementById('Num').value;
+            const h3 = document.getElementById('h3');
+
+            let today = new Date();
+            
+            let frontNum = Num.slice(0,Num.indexOf('-'));
+            
+            let a1 = Num.charAt(Num.indexOf('-')+1);
+            
+            let gender =  (a1 == '1' || a1 == '3') ? '남' : '여'
+
+            let age = (a1 == '1' || a1 == '2') ?  (today.getFullYear() - (1900 + Number(Num.slice(0,2)))) : (today.getFullYear() - (2000 + Number(Num.slice(0,2))))
+
+            h3.innerText = ` 이름: ${name}, 생년월일 ${frontNum}, 나이 ${age}, 성별 ${gender} `;
+
+        }
+
+    </script>
+</body>
+</html>
