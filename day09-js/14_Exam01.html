@@ -9,7 +9,7 @@
     <h1>가위바위보 10번하여 승률 출력</h1>
     <button type="button" id="btn">결과 출력</button>
     <h3>10게임의 승률은 <span id="result"></span>% 입니다.</h3>
-
+    <h3 id="h3"></h3>
     <script>
         // 가위 = 1 , 바위 =2 , 보 = 3
         // com = random / player = random
@@ -23,11 +23,15 @@
             let win = 0;
             let equal = 0;
             let lose = 0;
-
+            let str = '';
+         
             for(let i = 1; i <= 10; i++){
                 com = Math.floor(Math.random()*3)+1;
                 player = Math.floor(Math.random()*3)+1;
                 console.log(`${com} / ${player} `)
+                let comStr = (com == 1) ? "가위" : (com==2) ? "바위" : "보";
+                let playerStr = (player == 1) ? "가위" : (player==2) ? "바위" : "보";
+                str += `${i}회차 :  com > ${comStr} / player > ${playerStr} <br> ` ;
                 if(com == player){
                     equal++;
                 }else if(player == 1 && com == 2){
@@ -51,6 +55,7 @@
             let result = document.getElementById('result');
 
             result.innerText = ` ${rate} ` ;
+            document.getElementById('h3').innerHTML=`${str}`;
         })
 
     </script>

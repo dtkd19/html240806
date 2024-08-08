@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const student =[
+            {name:'hong', age: 23},
+            {name:'kim', age: 25},
+            {name:'lee', age: 30},
+            {name:'pack', age: 28},
+            {name:'choi', age: 22},
+        ];
+
+        // 나이가 25세 이상인 데이터만 필터링하여 출력
+         const ageArr = student.filter((a) => {
+            return a.age >= 25;
+         }) 
+         console.log(ageArr);
+
+        // 이름의 길이가 3글자인 학생만 필터링하여 출력
+
+        const nameArr = student.filter((a) => { 
+            return a.name.length == 3;
+        })
+        console.log(nameArr);
+    </script>
+</body>
+</html>
