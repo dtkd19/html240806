@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        많은 양의 데이터가 실시간으로 전달되어야할 때 가장 효율적으로 데이터를 보내는 방법
+        데이터 구조화 => 구조화된 텍스트 => JSON
+    </h1>
+    <ul>
+        <li>
+            JSON(JavaScript Object Notation)
+            JavaScript 객체를 구조화된 데이터로 표현하기 위한 문자기반 표준 포멧
+        </li>
+        <li>
+            웹 서버 (<->) 화면 간에 데이터를 전송할 때 일반적으로 사용되는 데이터 포멧
+        </li>
+        <li>
+            자바스크립트의 객체 형식이기 때문에, 구조파악이 쉽고, 제작도 쉽다.
+        </li>
+        <li>
+            특히 웹 분야는 자바 스크립트가 모든 프론트에 호환된다는 점을 활용
+            데이터 수집, 출력, 활용 거의 모든 플랫폼에서 JSON을 활용하고 있음.
+        </li>
+    </ul>
+    <script>
+        // https://finance.naver.com/ 거래상위 종목을 데이터구조화 해보기
+        const top = {
+            '거래상위':[
+                {
+                    name: 'KODEX 200선물인버스',
+                    price: 2190,
+                    upDown: -65,
+                    ratio: -2.88
+                },
+                {
+                    name: '우리바이오',
+                    price: 5420,
+                    upDown: 140,
+                    ratio: -2.65
+                },
+                {
+                    name: 'SG세계물산',
+                    price: 485,
+                    upDown: -4,
+                    ratio: -0.82
+                },{},{}
+            ],
+            '상승':[
+                {},{},{}
+            ],
+            '하락':[
+                {},{},{}
+            ],
+            '시각총액 상위':[
+                {},{},{}
+            ]
+        };
+        // 환율 / 금시계 구조화 해보기
+
+        const exs = {
+            exchange:[
+                {
+                    name:'달러/일본 엔(08.08)',
+                    price: 147.2600,
+                    updown: -0.04
+                },
+                {
+                    name:'유로/달러(08.08)',
+                    price: 1.0906,
+                    updown: -0.00   
+                },
+                {
+                    name:'파운드/달러(08.08)',
+                    price: 1.2714,
+                    updown: -0.00
+                },
+                {
+                    name:'달러인덱스(08.08)',
+                    price: 103.0200,
+                    updown: 0.03
+                }
+            ],
+            gold:[
+                {
+                    name:'국제금(08.08)',
+                    price: 2463.30,
+                    updown: 30.90
+                },
+                {
+                    name:'국내금(08.09)',
+                    price: 107144.65,
+                    updown: 99.48
+                }
+            ]
+        }
+        
+
+    </script>
+</body>
+</html>

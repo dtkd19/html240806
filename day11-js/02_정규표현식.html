@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        정규표현식(Regular Expression)
+        문자 내에서 특정 내용을 찾거나 대체, 발췌 하는데 사용
+    </h1>
+    <ul>
+        <li>
+            RegExp() : 객체로 사용
+        </li>
+        <li>
+            특정 데이터를 탐색, 확인, 존재여부를 쉽게 파악하기 위한 규칙
+        </li>
+        <li>
+            웹 분야에서는 password, 첨부파일 규칙 등에 사용
+            자주 쓰이지는 않음.
+        </li>
+        <li>
+            데이터분석 관련되어서는 꼭 알고 있어야하는 규칙
+        </li>
+        <li>
+            다른언어에서도 비슷한 형식으로 쓰이고 있음.
+        </li>
+    </ul>
+    <ul>
+        <li>
+            /regExp/ig : / / => 시작기호, 종료기호 
+            regExp : 패턴      ig : flag(옵션)
+        </li>
+        <li>
+            ('str').match(/regExp/flag)
+            str에서 매칭되는 항목들을 배열로 리턴
+        </li>
+        <li>
+            ('str').replace(/regExp/flag, 바꿀문자)
+            str에서 매칭되는 항목들을 바꿈
+        </li>
+        <li>
+            ('str').split(/regExp/)
+            정규표현식에 매칭되는 항목으로 쪼개 배열로 리턴
+        </li>
+        <li>
+            (/regExp/).text('str') : 문자열이 정규표현식에 맞는지 체크
+            return true / false 
+        </li>
+    </ul>
+    <ul>
+        <li>
+            정규표현식 플래그 
+        </li>
+        <li>
+            i : 대소문자 구분x, g : 전역검색,  m: 줄바꿈 포함
+        </li>
+        <li>
+            ㄱ-ㅎ가-힣 : 한글을 / a-zA-Z : 영문자 / 0-9 : 숫자
+        </li>
+        <li>
+            . : 모든 문자열(숫자,한글,영어,특수문자,공백 포함) : 줄바꿈 x
+        </li>
+        <li>
+            \d: 숫자 \D: 숫자가 아닌것
+            \s: 공백 \s: 공백 아닌것
+            \w: 영숫자 \w: 영숫자 아닌것
+            \특수기호 \! \@ \#...
+        </li>
+        <li>
+            검색 패턴: | or (a|b)
+        </li>
+        <li>
+            [] : or의 묶음 / 문자들 중 하나
+            /[abc]/ => "a","b","c" 중 하나를 포함하는
+            /abc/ => "abc"를 포함하는
+            [a-z] => a-z중 하나를 포함하는
+            [^abc] => "a","b","c" 제외 
+        </li>
+        <li>
+           ^str$ =>  ^시작 / $끝
+        </li>
+    </ul>
+    <script>
+        let testText = 'This is JavaScript Regular Expression';
+        console.log(testText.match(/[is]/g))
+
+        const fileName = ['abc.jpg', 'main.gif', 'test.txt','doc.pdf','code.js']
+
+        // 이미지파일 : abc.jpg, main.gif
+        // 그외 파일 구분해서 출력 : test.txt,doc.pdf,code.js
+
+        for(let file of fileName){
+            // console.log(file.match(/(jpg|jpeg|png|gif)/i))
+            if(file.match(/(jpg|jpeg|png|gif)/i)){
+                console.log('이미지파일 : ' + file);
+            } else{
+                console.log('그 외 파일: ' + file);
+            }
+        }
+    </script>
+</body>
+</html>

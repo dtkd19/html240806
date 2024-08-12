@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        input 2개 생성 => 과목 , 점수 입력
+        map에 추가
+        출력 => map 출력 ul=> li 형태로 출력
+        결과 => 합계, 평균, 합격여부 (60점 이상이면 합격)
+        점수는 0~100까지 
+     -->
+
+        과목: <input type="text" id="subject"><br>
+        점수: <input type="text" id="point"><br>
+        <button type="button" id="btn1">추가</button>
+        <button type="button" id="btn2">출력</button>
+        <button type="button" id="btn3">결과</button>
+        <ul id="list"></ul>
+        <h3 id="result"></h3>
+
+     <script>
+        const myMap = new Map();
+        let str = '';
+        let str2 = '';
+        let sum = 0;
+        let subject = document.getElementById('subject');
+        let point = document.getElementById('point');
+
+        document.getElementById('btn1').addEventListener('click', () => {
+            subVal = subject.value;
+            poiVal = point.value;
+            if(poiVal >= 0 && poiVal <= 100){
+                myMap.set(subVal,poiVal);
+                subject.value = '';
+                point.value = '';
+            } else{
+                str = '0~100까지의 수를 입력해주세요.';
+                subject.value = '';
+                point.value ='';
+            }
+            document.getElementById('result').innerText =str;
+        })
+
+        document.getElementById('btn2').addEventListener('click', () => {
+            
+            myMap.forEach(function(v,i,s){
+                str2 += `<li> ${i} / ${v} </li>`;
+                sum += Number(v);
+            })
+
+            document.getElementById('list').innerHTML = str2;
+
+        })
+
+        document.getElementById('btn3').addEventListener('click', () => {
+            let avg = (sum/myMap.size).toFixed(2);
+            let pass = '';
+            if(avg >= 60){
+                pass = '합격';
+            } else {
+                pass = '불합격';
+            }
+            document.getElementById('result').innerHTML = ` 합계: ${sum}, 평균: ${avg}, 합격여부: ${pass} `;            
+            
+        })
+    
+
+     </script>
+</body>
+</html>
