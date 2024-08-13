@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const memberObject ={
+            name: 'hong',
+            age: 30,
+            married: true,
+            favors:['Baseball','Game','Movie','etc....']
+        };
+        const memberObject2 ={
+            name: 'kim',
+            age: 25,
+            married: false,
+            favors:['Coffee','Dog','Movie','etc....']
+        };
+
+        const member = [];
+        member.push(memberObject);
+        // console.log(member);
+        // memberObject를 3개 복사하여 저장
+        // for(let i=0; i<3; i++){
+        //     member.push(memberObject);
+        // }
+        // console.log(member);
+        // 2번째 member를 kim으로 변경
+        // member[1].name='kim';
+        member.push(memberObject2);
+        console.log(member);
+        //memberObject 는 하나의 객체 (다 똑같은 객체-class 생성)
+        
+
+        //객체의 값을 전부 분해하여 콘솔에 찍기
+        // for of : 배열의 내용을 탐색할 때
+        // for in : 객체 안의 내용을 탐색할 때
+        // 객체 값을 출력 객체명[키명] = value 리턴
+        console.log(member[0].name);
+        console.log("---- 배열 객체 ----");
+        for(let mem of member){
+            // 첫번째 member 값 
+            for (let keyName in mem){
+                if(keyName == 'favors'){
+                    console.log("-- 취미 --")
+                    for(let f of mem[keyName]){
+                        console.log(f);
+                    }
+                } else {
+                    console.log(keyName+": "+mem[keyName]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

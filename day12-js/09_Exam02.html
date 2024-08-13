@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(254, 255, 210);
+        }
+        .calculator {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 360px;
+            background-color: #fff;
+        }
+
+        form{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        input {
+            width: 100%;
+            height: 80px;
+            font-size: 1.5em;
+            text-align: right;
+            border: none;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #eeeded;
+            border-bottom: 2px solid #d4d4d4;
+        }
+        button {
+            width: 90px;
+            height: 60px;
+            font-size: 1.2em;
+            border: 1px solid #ccc;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            outline: none;
+            box-sizing: border-box;
+        }
+        .clear{
+            width: 270px;
+            background-color: #fdcae1;
+        }
+        .result{
+            width: 180px;
+        }
+        .operator{
+            background-color: #fdfd96;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <form action="" name="froms">
+            <input type="text" id="output"> <br>
+            <button type="button" class="clear" value="C">C</button>
+            <button type="button" class="operator" value="/">/</button><br>
+            <button type="button" class="number" value="1">1</button>
+            <button type="button" class="number" value="2">2</button>
+            <button type="button" class="number" value="3">3</button>
+            <button type="button" class="operator" value="*">*</button><br>
+            <button type="button" class="number" value="4">4</button>
+            <button type="button" class="number" value="5">5</button>
+            <button type="button" class="number" value="6">6</button>
+            <button type="button" class="operator" value="+">+</button><br>
+            <button type="button" class="number" value="7">7</button>
+            <button type="button" class="number" value="8">8</button>
+            <button type="button" class="number" value="9">9</button>
+            <button type="button" class="operator" value="-">-</button><br>
+            <button type="button" class="" value=".">.</button>
+            <button type="button" class="number" value="0">0</button>
+            <button type="button" class="operator result" value="=">=</button>
+         
+        </form>
+    </div>
+    <script>
+
+        let output = document.getElementById('output');
+        let op = '';
+        let left = '';
+        let right = '';
+        let result = 0;
+
+        function calc(left,op,right){
+            switch(op){
+                case '+' : 
+                return Number(left) + Number(right); break;
+                case '-' :
+                return Number(left) - Number(right); break;
+                case '*' :
+                return Number(left) * Number(right); break;
+                case '/' :
+                return Number(left) / Number(right); break;
+            }
+        }
+
+
+        document.querySelector('.calculator').addEventListener('click', (e) => {
+            console.log(e.target.value); // 내가 선택한 객체의 value 값
+            console.log(typeof e.target.value);
+            //eval 함수 : 절대사용안됨.
+            
+            let value = e.target.value;
+    
+            if (!value) return;
+            
+            if (value === 'C') {
+                output.value = '';
+                left = '';
+                right = '';
+                operator = '';
+            } else if (['+', '-', '*', '/'].includes(value)) {
+                if (left && operator) {
+                    right = output.value;
+                  //  console.log(`left: ${left}, operator: ${operator}, right: ${right}`); 
+                    output.value = calc(left, operator, right);
+                    left = output.value;
+                } else {
+                    left = output.value;
+                }
+                operator = value;
+                output.value = '';
+            } else if (value === '=') {
+                if (left && operator) {
+                    right = output.value;
+                   // console.log(`left: ${left}, operator: ${operator}, right: ${right}`); 
+                    output.value = calc(left, operator, right);
+                    left = output.value;
+                    operator = '';
+                }
+            } else {
+                output.value += value;
+            }
+
+        })
+    </script>
+</body>
+</html>

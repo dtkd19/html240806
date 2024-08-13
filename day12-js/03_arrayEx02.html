@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>내가 좋아하는 가수</h1>
+    <form action="">
+        이름 : <input type="text" id="name"><br>
+        나이 : <input type="text" id="age"><br>
+        주소 : <input type="text" id="address"><br>
+        playList : <br>
+        <input type="text" id="first">
+        <input type="text" id="second">
+        <input type="text" id="third">
+        <button type="button" id="add">등록</button>
+    </form>
+    <script>
+        const people =[];
+
+    //     const musician = {
+    //     name : 'IU',
+    //     age : 20,
+    //     address : 'seoul',
+    //     playList :{
+    //         frist : '너랑나',
+    //         second : '좋은날',
+    //         third : '밤편지'
+    //     }
+    // }
+    // people.push(musician);
+    console.log(people);
+
+    // people에 객체를 3개 등록
+    let name = document.getElementById('name');
+    let age = document.getElementById('age');
+    let address = document.getElementById('address');
+    let first = document.getElementById('first');
+    let second = document.getElementById('second');
+    let third = document.getElementById('third');
+
+    document.getElementById('add').addEventListener("click", () => {
+
+        const singer = {
+            name : name.value,
+            age : age.value,
+            address : address.value,
+            playList : {
+                first : first.value,
+                second : second.value,
+                third : third.value
+            }
+        };
+        
+        people.push(singer);
+        console.log(people);
+        
+        print();
+
+        name.value = "";
+        age.value ="";
+        address.value = "";
+        first.value = "";
+        second.value = "";
+        third.value = "";
+
+    })
+
+    // 3명의 데이터를 콘솔에 for문으로 순회 나열
+
+    function print(){
+        for(let a of people){
+            for(let keyName in a){
+                if(keyName == 'playList'){
+                    console.log("-- 플레이리스트 --");
+                    for(let p in a[keyName]){
+                        console.log(a[keyName][p]);          
+                    }
+                } else {
+                    console.log(keyName+": "+a[keyName]);
+                }
+            }
+        }   
+
+    }
+
+    function print2(){
+        people.forEach(function(e){
+            console.log('-- 가수 --');
+            for(let keyName in e){
+                if(keyName == 'playList'){
+                    //다시 객체 안
+                    console.log('-- 리스트 --')
+                    for(let key in e[keyName]){
+                        console.log(e[keyName][key]);
+                    }
+                } else{
+                    console.log(keyName+": "+e[keyName]);
+                }
+            }
+        })
+    }
+
+    // for(let a of people){
+    //     for(let keyName in a){
+    //         if(keyName == 'playList'){
+    //             console.log("-- 플레이리스트 --");
+    //             for(let p in a[keyName]){
+    //                 console.log(keyName[p]);              
+    //             }
+    //         } else {
+    //             console.log(keyName+": "+a[keyName]);
+    //         }
+    //     }
+    // }
+
+    </script>
+</body>
+</html>

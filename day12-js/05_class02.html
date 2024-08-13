@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // class 객체 생성 / 일반 객체 생성
+        // 계좌   이름, 금액, 입금, 출금, 이체
+
+        // 일반 객체 생성
+        const myAccount = {
+            name : 'hong',
+            balance : 0,
+            //입금
+            deposit : function(amount){ 
+                this.balance += amount; // 누적
+            },
+            //출금
+            withdraw : function(amount){
+                this.balance -= amount;
+            },
+            //이체
+            transfer : function(amount, otherAccount){
+                this.balance -= amount;
+                otherAccount.balance += amount;
+            }
+        }
+        const yourAccount = {
+            name : 'kim',
+            balance : 10000,
+            //입금
+            deposit : function(amount){ 
+                this.balance += amount; // 누적
+            },
+            //출금
+            withdraw : function(amount){
+                this.balance -= amount;
+            },
+            //이체
+            transfer : function(amount, otherAccount){
+                this.balance -= amount;
+                otherAccount.balance += amount;
+            }
+        }
+        console.log(myAccount.name, ":",myAccount.balance);
+        myAccount.deposit(10000);
+        console.log(myAccount.name, ":",myAccount.balance);
+        myAccount.withdraw(3000);
+        console.log(myAccount.name, ":",myAccount.balance);
+        myAccount.transfer(2000,yourAccount);
+        console.log(myAccount.name, ":",myAccount.balance);
+        console.log(yourAccount.name, ":",yourAccount.balance);
+        console.log('-----------------');
+        // class로 객체 생성
+        class BankAccount{
+            constructor(name, balance){
+                this.name = name;
+                this.balance = balance;
+            }
+            //입금
+            deposit(amount){ 
+                this.balance += amount; // 누적
+                return this.balance;
+            }
+            //출금
+            withdraw(amount){
+                this.balance -= amount;
+                return this.balance;
+            }
+            //이체
+            transfer(amount, otherAccount){
+                this.balance -= amount;
+                otherAccount.balance += amount;
+                return this.balance;
+            }
+        }
+        let leeAcc = new BankAccount('lee',5000);
+        let choiAcc = new BankAccount('choi',10000);
+        
+        console.log(leeAcc.name,":",leeAcc.balance);
+        console.log(choiAcc.name,":",choiAcc.balance);
+        console.log(leeAcc.deposit(10000));
+        console.log(leeAcc.name,":",leeAcc.balance);
+        console.log(leeAcc.withdraw(3000));
+        console.log(leeAcc.transfer(10000,choiAcc));
+        console.log(leeAcc.name,":",leeAcc.balance);
+        console.log(choiAcc.name,":",choiAcc.balance);
+    </script>
+    
+    
+</body>
+</html>

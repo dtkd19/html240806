@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 구구단 문제 -->
+    <form action="">
+        <h1>
+            <button type="button" id="startBtn">문제출제</button>
+        </h1>
+        <ol id="q"></ol>
+        <h1>
+            <button type="button" id="compareBtn">정답확인</button>
+        </h1>
+        <h3 id="printRatio"></h3>
+    </form>
+    <script>
+
+        let Num1 =0;
+        let Num2 =0;
+        const ans = [];
+        let str1 = '';
+        let count = 0;
+        const matchNum = [];
+        let correct =0;
+
+        document.getElementById('startBtn').addEventListener('click', () => {
+
+            document.getElementById('printRatio').innerText = '';
+            ans.splice(0,10);
+        
+            for(let i = 1; i <= 10; i++){
+                count++;
+                Num1 = Math.floor(Math.random()*8)+2;
+                Num2 = Math.floor(Math.random()*9)+1;
+                ans.push(Num1*Num2);
+                str1 += `<li> ${Num1} * ${Num2} = <input type="text" id="ans${i}"></li> ` 
+            }
+            console.log(ans);
+
+            document.getElementById('q').innerHTML = str1;
+            
+
+
+        })
+
+        document.getElementById('compareBtn').addEventListener('click', () => {
+            
+            matchNum.splice(0,10);
+
+            for(let i = 1; i <= 10; i ++){
+                matchNum.push(Number(document.getElementById(`ans${i}`).value));
+            }
+            console.log(matchNum);
+
+            for(let i = 0; i< 10; i++){
+                if(ans[i] == matchNum[i]){
+                    correct++;
+                    document.getElementById(`ans${i+1}`).value += ' 정답';
+                    document.getElementById(`ans${i+1}`).style.backgroundColor = "green"
+                } else {
+                    document.getElementById(`ans${i+1}`).value += ' 오답';
+                    document.getElementById(`ans${i+1}`).style.backgroundColor = "red"
+                }
+            }
+
+            let rate = ((correct/count)*100);
+
+            document.getElementById('printRatio').innerHTML = ` 정답개수 : ${correct} , 정답률 : ${rate}% `;
+        })
+
+
+    </script>
+</body>
+</html>
