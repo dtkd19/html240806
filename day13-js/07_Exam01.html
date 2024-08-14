@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        header{
+            text-align: center;
+        }
+        header span{
+            font-weight: 600;
+            font-size: 30px;
+        }
+        header h1{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json -->
+    <header id="header"></header>
+    <section id="section"></section>
+
+
+    <script>
+        let header = document.getElementById('header');
+        
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+        .then(resp => resp.json())
+        .then(result => {
+                    console.log(result);
+                    printData(result);
+        })
+        .catch(err => console.log(err));
+
+        function printData(result){
+            let str = '';
+            for(let key in result){
+                if(key == 'squadName'){
+                    str += `<h1>${result[key]}</h1>`
+                }
+                else if(key == 'homeTown'){
+                    str += `<span>${key}:${result[key]}</span>`;
+                } else if(key == 'formed'){
+                    str += `<span> // ${key}: ${result[key]}</span>`;
+                }
+            }
+
+            header.innerHTML += str;
+        }
+
+        let section = document.getElementById('section');
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+        .then(resp => resp.json())
+        .then(result => {
+                    console.log(result);
+                    printData2(result);
+        })
+        .catch(err => console.log(err));
+
+        function printData2(result){
+            let str = '';
+            for(let key in result){
+                if(key == 'members'){
+                   for(let key2 in result[key] ){
+                        // console.log(key2);
+                        console.log(result[key][key2])
+                        for(let key3 in result[key][key2]){
+                            console.log(key3);
+                            if(key3 == 'powers'){
+                                str += `<p>${key3}: ${result[key][key2][key3]}</p>`;
+                            }
+                            else{
+                                str += `<p>${key3}: ${result[key][key2][key3]}</p>`;
+                            }
+                        }
+                   }
+                }
+      
+            }
+            section.innerHTML += str;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        비표준 속성(non-standard attribute)
+    </h1>
+    <ul>
+        <li>
+            html 태그의 종류에 따라 속성들이 제한적.
+            개발자들이 직접 속성을 만들어서 사용할 수 있는 방법을 제공.
+        </li>
+        <li>
+            너무 과도하면 개발 효율성과 가독성 저하, 적당히 사용하는것을 권장
+        </li>
+        <li class="list" data-name="가나다">
+            data-변수명 =>"${값}"
+            data-변수명 : 속성명
+            ${값}이 value로 인지할 수 있도록 설계되어 있음.
+        </li>
+        <li class="list" data-Age="20" data-item="listItem">
+            읽어 올때 : dataset.변수명 값이 리턴됨
+            dataset property를 사용하여 읽어들임.
+        </li>
+        <li>
+            변수명에 대문자는 허용안함.
+            dataset.Age(인지못함.) dataset.age(인식가능)
+            대문자를 사용하더라도 소문자로 변환하여 읽기 가능.
+        </li>
+    </ul>
+
+    <script>
+        // querySelector('css선택자') : 처음만나는 값을 인지
+        // querySelectorAll('css선택자') : 모든 값을 인지
+        // All은 값이 하나더라도 배열로 인지
+        let li_list_tag = document.querySelectorAll('.list');
+        console.log(li_list_tag);
+        console.log(li_list_tag[0].dataset.name);
+        console.log(li_list_tag[1].dataset.age); // 대문자 인식 못함. undefined
+        console.log(li_list_tag[1].dataset.item);
+    </script>
+</body>
+</html>

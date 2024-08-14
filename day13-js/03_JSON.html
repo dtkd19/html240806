@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        JSON(JavaScript Object Notation) : 자바 스크립트의 객체 표기법
+    </h1>
+    <ul>
+        <li>
+            데이터 요청 및 응답처리에 필요한 데이터의 표준 형식을 제공하는 타입
+        </li>
+        <li>
+            백엔드(서버)언어 종류에 상관없이 데이터를 송수신 단말형식으로 통일
+        </li>
+        <li>
+            백엔드(서버)에서는 무조건 String 처리 - 화면(JavaScript)은 Object로 처리
+        </li>
+        <li>
+            화면에서 서버로 데이터를 보낼 때 > 
+            Object > String > JSON.stringify(jsObject)
+        </li>
+        <li>
+            서버에서 화면으로 데이터를 받을 때 > 
+            String > Object => JSON.parse(StringData)
+        </li>
+    </ul>
+
+    <script>
+        // '{name:value, name2:value2}' => object > string 변환
+        // {name:value, name2:value2} => string > object 변환
+        
+        const cake = {
+            id:'1234',
+            type:'donut',
+            name:'cake',
+            image:{
+                url:'img/001.jpg',
+                width:'200',
+                height:'20'
+            },
+            thumbnail:{
+                url:'img/th/001.jpg',
+                width: '20',
+                height: '5'
+            }
+        }
+        console.log(cake);
+        //cake를 string으로 변환
+        let cakeString = JSON.stringify(cake);
+        console.log(cakeString);
+        //{"id":"1234","type":"donut","name":"cake","image":{"url":"img/001.jpg","width":"200","height":"20"},"thumbnail":{"url":"img/th/001.jpg","width":"20","height":"5"}}
+
+        // 서버에서 온 string => object로 변경
+        let stringData = '{"id":"1234","type":"donut","name":"cake","image":{"url":"img/001.jpg","width":"200","height":"20"},"thumbnail":{"url":"img/th/001.jpg","width":"20","height":"5"}}';
+        let parseData = JSON.parse(stringData);
+        console.log(parseData);
+
+        // 콘솔에 key:value 형식으로 출력
+        // for in 사용하여 추출
+        // object[keyName] = value 추출
+        for(let keyName in cake){
+            if(keyName == 'image'){
+                console.log('-- 이미지 --')
+                for(let i in cake[keyName]){
+                    console.log(cake[keyName][i]);
+                }
+            } else if (keyName == 'thumbnail'){
+                console.log( '-- 썸네일 --')
+                for(let tb in cake[keyName]){
+                    console.log(cake[keyName][tb]);
+                }
+            } else {
+                console.log(keyName+":"+cake[keyName]);
+            }
+        }
+
+        
+    </script>
+
+</body>
+</html>

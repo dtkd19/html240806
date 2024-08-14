@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: beige;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calculator{
+            border: 1px solid black;
+            background-color:  orange;
+            padding: 5px;
+        }
+        .calculator form{
+            display: grid;
+            /* 65px*65px 4개 */
+            grid-template-columns: repeat(4,65px);
+            grid-auto-rows: 65px;
+            gap: 5px;
+
+        }
+        .calculator form button, input{
+            font-size: 15px;
+            border: 2px solid black;
+            cursor: pointer;
+            padding: 5px;
+            
+        }
+        .calculator form button:hover{
+            box-shadow: 1px 1px 2px white;
+        }
+        .calculator form input{
+            grid-column:  span 4;
+            font-weight: 700;
+            background-color: white;
+            text-align: right;
+        }
+        .calculator form .clear{
+            background-color: orangered;
+            grid-column:  span 3;
+            font-size: 20px;
+        }
+        .calculator form .result{
+            background-color: aqua;
+            grid-column: span 2;
+        }
+        .calculator form .operator{
+            background-color: skyblue;
+        }
+        .calculator form .result{
+            background-color: rgb(114, 100, 196);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <form action="" name="froms">
+            <input type="text" id="output"> 
+            <button type="button" class="clear" value="C">C</button>
+            <button type="button" class="operator" value="/">/</button>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            <button type="button" class="operator" value="*">*</button>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+            <button type="button" class="operator" value="+">+</button>
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+            <button type="button" class="operator" value="-">-</button>
+            <button type="button" value=".">.</button>
+            <button type="button" value="0">0</button>
+            <button type="button" class="operator result" value="=">=</button>
+        </form>
+    </div>
+    <script>
+        const output = document.getElementById('output');
+        let outputValue = '';
+
+        function operation(f, o, l){
+            let result = 0;
+            switch(o){
+                case "+": result = f + l; break;
+                case "-": result = f - l; break;
+                case "*": result = f * l; break;
+                case "/": result = f / l; break;
+            }
+            return result.toFixed(2);
+        }
+
+        function extractValue(strValue){
+            //String  13.5 + 12.3 =  연산자와 피연산자로 나누기
+            console.log(strValue);
+            let firstNum = strValue.substring(0, strValue.indexOf(" "));
+            let operator = strValue.substr(strValue.indexOf(" ")+1, 1);  // 시작번지부터 1개
+            let lastNum = strValue.substring(strValue.lastIndexOf(" ")+1); //마지막 공백부터 끝까지
+            console.log(firstNum, operator, lastNum);
+            //계산값 호출
+            return operation(parseFloat(firstNum), operator, parseFloat(lastNum));
+        }
+
+        document.querySelector('.calculator').addEventListener('click',(e)=>{
+            console.log(e.target.value); //내가선택한 객체
+            // console.log(Number(e.target.value)); //내가 선택한 객체의 value 값
+            // console.log(typeof e.target.value);
+            //eval 함수 : 절대사용안됨.
+            //NaN => op로 사용
+            let btnVal = e.target.value;
+            output.value += btnVal;
+            if(!isNaN(btnVal)){ //버튼의 값이 숫자라면...
+                outputValue += btnVal;
+            }else{
+                //숫자가 아닐 때
+                // + - * /  . = C    undefined
+                if(btnVal != undefined){
+                    switch(btnVal){
+                        case ".": 
+                            //숫자에 붙어서 소수점 역할을 하기.
+                            outputValue += btnVal;
+                            break;
+                        case "C": 
+                            //output 창을 지우기
+                            outputValue='';
+                            output.value='';
+                            break;
+                        default: 
+                            //사칙연산 + - * / = 
+                            let sub = ''; //결과를 받을 변수
+                            if(btnVal == '='){
+                                //연산의 결과를 호출 (function 작업)
+                                sub = extractValue(outputValue); //결과값 리턴
+                                outputValue = sub;
+                            }else{
+                                outputValue += ` ${btnVal} `;  
+                                // String  13.5 + 12.3 = 
+                                // 이후 function 작업으로 피연산자와 연산자로 분리시킴
+                            }
+                            break;
+                    }
+                }
+            }
+            output.value = outputValue;
+        });
+    </script>
+</body>
+</html>
