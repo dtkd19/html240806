@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="btn1">li 한번에 추가</button>
+    <button type="button" id="btn2">li 하나씩 추가</button>
+    <button type="button" id="btn3">li 하나씩 추가</button>
+    <button type="button" id="btn4">li 하나씩 추가</button>
+    
+    <ul id="ul"></ul>
+    <hr>
+    <ol id="ol"></ol>
+    <hr>
+    <ul id="ul2"></ul>
+    <hr>
+    <ol id="ol2"></ol>
+    <hr>
+
+    <script>
+        const datas = ['HTML','CSS','JavaScript','SQL'];
+
+
+        let ul = document.getElementById('ul');
+        let ol = document.getElementById('ol');
+        let index = 0; 
+        document.getElementById('btn1').addEventListener('click', () => {
+            let str = '';
+
+            for(let i=0; i<datas.length; i++){
+                str += `<li>${datas[i]}</li>`;
+            }
+            ul.innerHTML = str;
+        })
+
+        document.getElementById('btn2').addEventListener('click', () => {
+            if (index < datas.length) { 
+                ol.innerHTML += `<li>${datas[index]}</li>`;
+                index++; 
+                }
+            })
+        
+        // CreateElement : element 생성 
+        // appendChild : 자식으로 추가
+
+        let i = 0;
+        document.getElementById('btn3').addEventListener('click', () => {
+            datas.forEach((e)=>{
+                let li = document.createElement('li'); // <li></li>
+                li.innerText = e
+                document.getElementById('ul2').appendChild(li); // ul의 자식으로 추가 ul.innerHTML = li
+            })
+        })
+        document.getElementById('btn4').addEventListener('click', () => {
+            if (i < datas.length) {
+                let li = document.createElement('li'); 
+                li.innerText = datas[i];
+                i++;
+                document.getElementById('ol2').appendChild(li);
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

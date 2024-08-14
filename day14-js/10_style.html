@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        element CSS 적용
+    </h1>
+    <ul>
+        <li>
+            tagName.style.css 속성 접근가능.
+        </li>
+        <li>
+            css 속성 중 - => -를 지우고 첫글자를 대문자로 font-size => fontSize
+        </li>
+        <li>
+            element.setAttribute(name, value);
+        </li>
+        <li>
+            a.setAttribute('herf', 'http://www.naver.com');
+        </li>
+    </ul>
+    <h1 id="h1">색상변경</h1>
+    <input type="color" id="colorValue">
+    <button type="button" id="changeBtn">변경</button>
+
+    <script>
+        document.getElementById('changeBtn').addEventListener('click' ,() => {
+            const h1 = document.getElementById('h1');
+            let colorValue = document.getElementById('colorValue').value;
+            h1.style.color = colorValue;
+        })
+    </script>
+</body>
+</html>

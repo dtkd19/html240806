@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        
+        h2{
+            font-weight: 700;
+            font-size: 30px;
+        }
+        form{
+            background-color: rgb(178, 178, 255);
+            height: 100px;
+            width: 800px;
+        }
+        #item{
+            height: 40px;
+            margin-top: 25px;
+            width: 400px;
+            padding-left: 20px;
+            font-size: 20px;
+            
+        }
+        #itemList li:nth-of-type(even){
+            background-color: #99c3f7;
+        }
+        #itemList li:nth-of-type(odd){
+            background-color: rgb(252, 192, 242);
+        }
+        #itemList li{
+            list-style: circle;
+            height: 40px;
+            line-height: 40px;
+            font-weight: 700;
+            list-style: none;
+        }
+        #itemList li button{
+            border: none;
+            cursor: pointer;
+            float: right;
+            margin: 13px 5px 5px 5px
+        }
+        #itemList li:nth-of-type(even) button{
+            background-color:  #99c3f7;
+        }
+        #itemList li:nth-of-type(odd) button{
+            background-color: rgb(252, 192, 242);
+        }
+
+        #itemList li button:hover{        
+            background-color: rgba(58, 58, 58, 0.541);
+        }
+
+        #add{
+            height: 46px;
+            box-shadow: 3px 3px 3px black;
+        }
+        
+        #itemList{
+            padding: 0px;
+            margin: 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wapper">
+        <h2>여행 준비물 점검 목록</h2>
+        <form action="">
+            <input type="text" id="item" autofocus="true">
+            <button type="button" id="add">추가</button>
+        </form>
+        <div>
+            <ul id="itemList"></ul>
+        </div>
+    </div>
+
+    <script>
+        let item = document.getElementById('item');
+        let itemList = document.getElementById('itemList');
+
+        document.getElementById('add').addEventListener('click', () => {
+
+            let li = document.createElement('li');
+            li.innerHTML = `${item.value}<button class='del'>X</button>`;
+            // itemList.innerHTML += `<li>${item.value}<button class='del'>X</button></li>`;
+            itemList.appendChild(li);
+
+            item.value = '';
+
+        })
+
+        itemList.addEventListener('click', (event) => {
+            if (event.target.classList.contains('del')) {  //  del 클래스 확인
+                itemList.removeChild(event.target.parentElement);
+            }
+        })
+        
+    </script>
+</body>
+</html>

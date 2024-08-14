@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200..800&family=Gowun+Batang&family=Jua&family=Kalnia+Glaze:wght@100..700&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <style>
         header{
@@ -15,6 +18,27 @@
         }
         header h1{
             font-size: 40px;
+        }
+        .member-box{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 10px
+            
+
+        }
+        .member{
+            padding: 50px;
+            
+        }
+        h1{
+            font-family: "Permanent Marker", cursive;
+        }
+        .name{
+            font-family: "Permanent Marker", cursive;
+            font-size: 35px;
         }
     </style>
 </head>
@@ -62,24 +86,22 @@
 
         function printData2(result){
             let str = '';
-            for(let key in result){
-                if(key == 'members'){
-                   for(let key2 in result[key] ){
-                        // console.log(key2);
-                        console.log(result[key][key2])
-                        for(let key3 in result[key][key2]){
-                            console.log(key3);
-                            if(key3 == 'powers'){
-                                str += `<p>${key3}: ${result[key][key2][key3]}</p>`;
-                            }
-                            else{
-                                str += `<p>${key3}: ${result[key][key2][key3]}</p>`;
-                            }
-                        }
-                   }
+            if (result.members) {
+                str += `<div class="member-box">`;
+                for (let member of result.members) {
+                    str += `
+                        <div class="member">
+                            <p class="name"><strong>${member.name}</strong></p>
+                            <p><strong>Age:</strong> ${member.age} </p>
+                            <p><strong>Secret Identity:</strong> ${member.secretIdentity}</p>
+                            <p><strong>Powers:</strong></p>
+                                <ul>
+                                    ${member.powers.map(power => `<li>${power}</li>`)}
+                                </ul>
+                            </div>`;
                 }
-      
             }
+            str += `</div>`;
             section.innerHTML += str;
         }
     </script>
