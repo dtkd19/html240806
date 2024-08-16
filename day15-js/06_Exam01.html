@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="startBtn">게임시작</button>
+    <h1 id="comMsg"></h1>
+    숫자입력 : <input type="text" name="" id="myNum">
+    <button type="button" id="tryBtn">게임확인</button>
+    <ol id="ol"></ol>
+
+    <script>
+        let comNum = [];
+        let myNum = document.getElementById('myNum');
+        let myArr = [];
+        let st = 0;
+        let ball = 0;
+
+        document.getElementById('startBtn').addEventListener('click' , ()=> {
+            comNum = [];
+
+            makeNum();
+
+            console.log(...comNum)  // 컴퓨터 숫자확인용
+
+            document.getElementById('comMsg').innerText = '컴퓨터가 숫자를 결정하였습니다.'
+
+        })
+
+        document.getElementById('tryBtn').addEventListener('click', () => {
+            let myVal = myNum.value; 
+
+            if(myVal.length >=4 ){
+                alert(' 3자리의 숫자를 입력해주세요 ');
+                myNum.value = '';
+            } else{
+                myArr = [];
+                for (let i=0; i < 3; i++){
+                    myArr.push(Number(myVal[i]));
+                }
+                // console.log(myArr); // 내숫자확인용
+
+                check();
+
+                let str = '';
+                if(st == 3){
+                    str = `<li> 내숫자 : ${myVal} 스트라이크 정답~!!</li>`;
+                } else if ( st == 0 && ball == 0){
+                    str = `<li> 내숫자 : ${myVal} out~!! </li>`;
+                } else {
+                    str = `<li> 내숫자 : ${myVal} 스트라이크 : ${st}, 볼 : ${ball}</li> `;
+                }
+    
+    
+                document.getElementById('ol').innerHTML += str;
+
+                myNum.value = '';
+            }
+
+
+        })
+
+        function check(){
+
+            st = 0;
+            ball = 0;
+            
+            for(let i =0; i<comNum.length; i++){
+                if(comNum[i] == myArr[i]){
+                    st++;
+                } 
+            }
+
+            for(let i =0; i<comNum.length; i++){
+                if(myArr.includes(comNum[i]) && comNum[i] != myArr[i]){
+                    ball++;
+                }
+            }
+            console.log(st,ball);
+
+        }
+
+        function makeNum(){ // 겹치지않게 
+            comNum = [];
+            let count = 0;
+            while(count < 3){
+                let r = Math.floor(Math.random()*9+1);
+                if(!comNum.includes(r)){
+                    comNum[count] = r;
+                    count++;
+                }
+            }    
+        }
+
+    </script>
+</body>
+</html>

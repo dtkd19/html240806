@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="makeBtn">element</button>
+    <div id="zone"></div>
+
+    <script>
+        document.getElementById('makeBtn').addEventListener('click', () => {
+            let newBtn = `<button type="button" class ="newBtn" onclick="make()" id="newBtn">newBtn</button>`;
+            document.getElementById('zone').innerHTML = newBtn;
+        })
+
+
+        // document.getElementById('zone').addEventListener('click', (e)=> {
+        //     console.log(e.target);
+        //     if(event.target.classList.contains('newBtn')){
+        //         document.getElementById('zone').innerHTML += `<h3>새로운 버튼을 눌렀습니다.</h3>` ;
+        //     }
+        // })
+
+
+
+        //문서 전체에 리스너를 장착하여 엘리먼트 선택 한 후 id 검사
+        // document.addEventListener('click', (e) => {
+        //     if(e.target.id == 'newBtn'){
+        //         document.getElementById('zone').innerHTML +=`<h3>새로운 버튼을 눌렀습니다.</h3>` ;
+        //     }
+        // })
+
+
+        // 생성된 엘리먼트에 onclick 가능 
+        function make(){
+            document.getElementById('zone').innerHTML +=`<h3>새로운 버튼을 눌렀습니다.</h3>` ;
+        }
+    </script>
+</body>
+</html>

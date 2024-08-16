@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: skyblue;
+        }
+
+        #container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: aqua;
+            width: 400px;
+            padding: 50px 50px;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+
+        #container input{
+            padding: 10px;
+            width: 100%;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        
+        #container #pw{
+            margin-top: 15px;
+        }
+
+        #container button{
+            padding: 5px;
+            margin-top: 15px;
+            margin-bottom: 70px;
+            width: 100%;
+            background-color: rgb(142, 223, 255);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        #container a{
+            color: gray;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <form action="">
+    <div id="container">
+        <input type="text" name="id" id="id" placeholder="ID:"><br>
+        <input type="password" name="pw" id="pw" placeholder="PW:"><br>
+        <button id ="btn" class="btn" disabled="disabled">로그인</button><br>
+        <a href="">비밀번호를 잊어버리셨나요</a>
+    </div>
+    </form>
+
+
+
+    <script>
+        // id규칙 8자 이상
+        // pw규칙 숫자, 문자, 특수문자가 포함된 8자 이상
+        // /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/
+
+        let id = document.getElementById('id');
+        let pw = document.getElementById('pw');
+        let btn = document.getElementById('btn');
+
+        let reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/
+    
+
+        function check(){
+            let idVal = id.value;
+            let pwVal = pw.value;
+            if(idVal.length >= 8 && reg.test(pwVal)){
+                btn.disabled = false; 
+                btn.style.setProperty('background-color', 'skyblue')
+            } else{
+                btn.disabled = true;
+            }
+            console.log(pwVal, reg.test(pwVal))
+        }
+
+
+        id.addEventListener('input', check);
+        pw.addEventListener('input', check);
+
+
+        
+        
+
+
+
+    </script>
+</body>
+</html>

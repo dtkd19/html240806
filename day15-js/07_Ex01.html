@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="startBtn">게임 시작</button>
+    <h1 id="comMsg"></h1>
+    숫자 입력 : <input type="text" id="myNum">
+    <button type="button" id="tryBtn">게임 확인</button>
+    <ol id="ol"></ol>
+
+    <script>
+        let comNum = new Set(); 
+        let myNum = document.getElementById('myNum');
+        let mySet = new Set(); 
+        let st = 0;
+        let ball = 0;
+
+        document.getElementById('startBtn').addEventListener('click', () => {
+            comNum.clear(); 
+            comArr = [];
+            document.getElementById('ol').innerText = '';
+            
+
+            while (comNum.size < 3) {
+                comNum.add(Math.floor(Math.random()*9 + 1));
+            }
+            // console.log([...comNum]); // 컴퓨터 숫자 확인용
+
+            document.getElementById('comMsg').innerText = '컴퓨터가 숫자를 결정하였습니다.';
+        });
+
+        document.getElementById('tryBtn').addEventListener('click', () => {
+            let myVal = myNum.value;
+
+            if(comNum.size<=0){
+                comMsg.innerText = "게임시작버튼을 클릭해주세요.";
+                return;
+            }
+
+            if (!validMyNum(myVal)) {
+                alert('3자리의 숫자를 입력해주세요.');
+                myNum.value = '';
+            } else {
+                mySet.clear(); 
+                for (let i = 0; i < 3; i++) {
+                    mySet.add(Number(myVal[i]));
+                }
+                // console.log([...mySet]); // 내 숫자 확인용
+
+                check();
+
+                let str = '';
+                if (st === 3) {
+                    str = `<li>내 숫자 : ${myVal} 스트라이크 정답~!!</li>`;
+                } else if (st === 0 && ball === 0) {
+                    str = `<li>내 숫자 : ${myVal} out~!!</li>`;
+                } else {
+                    str = `<li>내 숫자 : ${myVal} 스트라이크 : ${st}, 볼 : ${ball}</li>`;
+                }
+
+                document.getElementById('ol').innerHTML += str;
+                myNum.value = '';
+            }
+        });
+
+        function check() {
+            st = 0;
+            ball = 0;
+
+            let comArr = [...comNum];
+            const myArr = [...mySet];
+
+            for (let i = 0; i < comArr.length; i++) {
+                if (comArr[i] === myArr[i]) {
+                    st++;
+                }
+            }
+
+            for (let i = 0; i < comArr.length; i++) {
+                if (myArr.includes(comArr[i]) && comArr[i] !== myArr[i]) {
+                    ball++;
+                }
+            }
+            // console.log(st, ball);  //스트라이크 , 볼 갯수 확인
+        }
+
+        // 검증
+        // 숫자는 3자리, 숫자만가능, 비어있으면안됨 , 중복안됨
+
+        function validMyNum(myNum){
+            if(myNum ==''){
+                return false;
+            } else if(myNum.length != 3){
+                return false;
+            } else if(isNaN(myNum)){
+                return false;
+            } else if(new Set(myNum.split("")).size != 3){
+                return false;
+            } else {
+                return true;
+            }
+        }
+       
+
+
+    </script>
+</body>
+</html>
